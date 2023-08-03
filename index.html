@@ -4,65 +4,74 @@
     <title>Sun God Nica</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-    <style>
-        /* Add your custom styles here */
-        .slideshow-container {
-            max-width: 1000px;
-            position: relative;
-            margin: auto;
-        }
-        
-        .slideshow-img {
-            width: 100%;
-            height: auto;
-        }
-        
-        .slideshow-text {
-            text-align: center;
-            font-size: 24px;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
     <header>
         <h1 class="event-name">Welcome to the Most Hyped Event</h1>
-        <p class="event-name">Date and Time: 06/08/2023 12:00 PM</p>
+        <p class="event-name">Date and Time: 06/08/2023 12:00 PM </p>
         <p class="event-name">Address: Phoenix Market City</p>
     </header>
     
+    <!-- Audio with play button -->
+    <audio id="audio" preload="auto">
+        <source src="anime.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="audio-controls">
+        <button id="play-button">HEAR THE DRUMS OF LIBERATION!</button>
+    </div>
+
     <main class="main-container">
-        <div class="event-image-container">
-            <img src="event_image.png" alt="Event Image">
-        </div>
-        
-        <div class="slideshow-container">
-            <img class="slideshow-img" src="anime1.jpg" alt="Slide 1">
-            <img class="slideshow-img" src="anime2.jpg" alt="Slide 2">
-            <img class="slideshow-img" src="anime3.jpg" alt="Slide 3">
-        </div>
-        
-        <p class="slideshow-text">SOME ANIME GLIMPSE FROM INDIA WHERE WE WERE SPOTTED!</p>
-        
+        <img src="event_image.png" alt="Event Image">
         <div class="button-container">
             <a href="form.html" class="button">Register Now</a>
         </div>
     </main>
-    
+
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="anime1.jpg" style="width:100%">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="anime2.jpg" style="width:100%">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="anime3.jpg" style="width:100%">
+        </div>
+    </div>
+
+    <p class="gallery-description">
+        Check out some exciting moments from our previous events in the gallery below.
+    </p>
+
+    <script>
+        var audio = document.getElementById("audio");
+        var playButton = document.getElementById("play-button");
+
+        playButton.addEventListener("click", function() {
+            audio.play();
+            playButton.style.display = "none";
+        });
+    </script>
+
     <script>
         var slideIndex = 0;
         showSlides();
 
         function showSlides() {
             var i;
-            var slides = document.getElementsByClassName("slideshow-img");
+            var slides = document.getElementsByClassName("mySlides");
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
             slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}
-            slides[slideIndex-1].style.display = "block";
-            setTimeout(showSlides, 2000); // Change slide every 2 seconds
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
         }
     </script>
 </body>
